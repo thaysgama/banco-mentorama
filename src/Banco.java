@@ -173,7 +173,7 @@ public class Banco {
     public static Conta contaValida() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o numero da cpf:");
-        long cpfCadastrado = scanner.nextInt();
+        long cpfCadastrado = scanner.nextLong();
         System.out.println("Digite o numero da conta:");
         int numeroConta = scanner.nextInt();
         System.out.println("Digite o numero da agencia:");
