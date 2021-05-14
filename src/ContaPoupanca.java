@@ -14,11 +14,10 @@ public class ContaPoupanca extends Conta {
         this.dataAniversario = dataAniversario;
     }
 
-    public double getSaldo(String dataDia) {
+    public double getSaldo() {
         LocalDate localDateAniversario = LocalDate.parse(dataAniversario, DateTimeFormatter.ISO_DATE);
         LocalDate localDateDia = LocalDate.parse(dataDia, DateTimeFormatter.ISO_DATE);
         long diff = ChronoUnit.MONTHS.between(localDateAniversario.withDayOfMonth(1), localDateDia.withDayOfMonth(1));
-        DecimalFormat df = new DecimalFormat("0.00");
         if (localDateDia.isBefore(localDateAniversario.plusMonths(1))){
             return this.saldo;
         } else {
@@ -29,7 +28,7 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public boolean getSaque(double valor){
-        if (valor > getSaldo(dataDia)) {
+        if (valor > getSaldo()) {
             System.out.println("Operação saque falhou.");
             System.out.println("Seu saldo é insuficiente para efetuar essa transação.");
             return false;
@@ -85,7 +84,7 @@ public class ContaPoupanca extends Conta {
                 ", Data do Dia=" + dataDia +
                 ", Saldo=" + saldo +
                 ", Taxa de Juros=" + taxaDeJuros +
-                ", Saldo + rendimento=" + getSaldo(dataDia) +
+                ", Saldo + rendimento=" + getSaldo() +
                 '}';
     }
 }
